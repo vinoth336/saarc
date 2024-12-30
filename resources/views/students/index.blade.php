@@ -112,8 +112,11 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if(is_array($lastImportDetail?->failed_record_details))
-                                        @foreach($lastImportDetail?->failed_record_details as $failedRecordDetail)
+                                    @if($lastImportDetail?->failed_record_details)
+                                        @php
+                                            $failedRecordDetails = json_decode($lastImportDetail?->failed_record_details, true);
+                                        @endphp
+                                        @foreach($failedRecordDetails as $failedRecordDetail)
                                             <tr>
                                                 <td>
                                                     {{ implode(" | ", $failedRecordDetail['data'] ?? []) }}
