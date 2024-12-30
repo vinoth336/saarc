@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class StudentController extends Controller
 {
-
     public function index(StudentDataTable $dataTable)
     {
         $lastImportDetail = ImportHistory::latest()->first();
